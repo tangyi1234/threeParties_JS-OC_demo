@@ -17,6 +17,8 @@
 		A27B92B82175D1FC00D18AB8 /* WebViewJavascriptBridge_JS.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B92B22175D1FC00D18AB8 /* WebViewJavascriptBridge_JS.m */; };
 		A27B92B92175D1FC00D18AB8 /* WebViewJavascriptBridgeBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B92B42175D1FC00D18AB8 /* WebViewJavascriptBridgeBase.m */; };
 		A27B92BA2175D1FC00D18AB8 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B92B62175D1FC00D18AB8 /* WKWebViewJavascriptBridge.m */; };
+		A27B92BD2175D26500D18AB8 /* TYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B92BC2175D26500D18AB8 /* TYWebViewController.m */; };
+		A27B92BF2175DA5B00D18AB8 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = A27B92BE2175DA5B00D18AB8 /* ExampleApp.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,9 @@
 		A27B92B42175D1FC00D18AB8 /* WebViewJavascriptBridgeBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewJavascriptBridgeBase.m; sourceTree = "<group>"; };
 		A27B92B52175D1FC00D18AB8 /* WKWebViewJavascriptBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WKWebViewJavascriptBridge.h; sourceTree = "<group>"; };
 		A27B92B62175D1FC00D18AB8 /* WKWebViewJavascriptBridge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WKWebViewJavascriptBridge.m; sourceTree = "<group>"; };
+		A27B92BB2175D26500D18AB8 /* TYWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWebViewController.h; sourceTree = "<group>"; };
+		A27B92BC2175D26500D18AB8 /* TYWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWebViewController.m; sourceTree = "<group>"; };
+		A27B92BE2175DA5B00D18AB8 /* ExampleApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleApp.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,10 +75,13 @@
 		A27B92942175D0F500D18AB8 /* threeParties_JS&OC_demo */ = {
 			isa = PBXGroup;
 			children = (
+				A27B92BE2175DA5B00D18AB8 /* ExampleApp.html */,
 				A27B92952175D0F500D18AB8 /* AppDelegate.h */,
 				A27B92962175D0F500D18AB8 /* AppDelegate.m */,
 				A27B92982175D0F500D18AB8 /* ViewController.h */,
 				A27B92992175D0F500D18AB8 /* ViewController.m */,
+				A27B92BB2175D26500D18AB8 /* TYWebViewController.h */,
+				A27B92BC2175D26500D18AB8 /* TYWebViewController.m */,
 				A27B92AE2175D1FC00D18AB8 /* WebViewJavascriptBridge */,
 				A27B92A12175D0F500D18AB8 /* Assets.xcassets */,
 				A27B92A32175D0F500D18AB8 /* LaunchScreen.storyboard */,
@@ -159,6 +167,7 @@
 			files = (
 				A27B92A52175D0F500D18AB8 /* LaunchScreen.storyboard in Resources */,
 				A27B92A22175D0F500D18AB8 /* Assets.xcassets in Resources */,
+				A27B92BF2175DA5B00D18AB8 /* ExampleApp.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A27B929A2175D0F500D18AB8 /* ViewController.m in Sources */,
+				A27B92BD2175D26500D18AB8 /* TYWebViewController.m in Sources */,
 				A27B92A02175D0F500D18AB8 /* threeParties_JS_OC_demo.xcdatamodeld in Sources */,
 				A27B92B82175D1FC00D18AB8 /* WebViewJavascriptBridge_JS.m in Sources */,
 				A27B92A82175D0F500D18AB8 /* main.m in Sources */,
@@ -305,6 +315,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N5WRHCE748;
 				INFOPLIST_FILE = "threeParties_JS&OC_demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Users-xiyin-desktop-name-Get-image-processing.threeParties-JS-OC-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -319,6 +330,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = N5WRHCE748;
 				INFOPLIST_FILE = "threeParties_JS&OC_demo/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Users-xiyin-desktop-name-Get-image-processing.threeParties-JS-OC-demo";
 				PRODUCT_NAME = "$(TARGET_NAME)";

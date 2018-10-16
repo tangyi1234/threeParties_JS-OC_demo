@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "TYWebViewController.h"
 
 @interface ViewController ()
 
@@ -17,8 +18,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self addView];
 }
 
+- (void)addView{
+    UIButton *but = [UIButton buttonWithType:UIButtonTypeCustom];
+    but.frame = CGRectMake(10, 80, 150, 30);
+    but.backgroundColor = [UIColor redColor];
+    [but setTitle:@"跳转" forState:UIControlStateNormal];
+    [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but];
+}
+
+- (void)selectorBut{
+    TYWebViewController *vc = [[TYWebViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
