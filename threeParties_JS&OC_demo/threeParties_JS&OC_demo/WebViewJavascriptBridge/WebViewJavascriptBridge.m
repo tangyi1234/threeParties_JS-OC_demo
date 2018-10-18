@@ -99,7 +99,7 @@
     _webView = nil;
     _webViewDelegate = nil;
 }
-
+//js调oc，这个方法也是会走的。
 - (NSString*) _evaluateJavascript:(NSString*)javascriptCommand {
     return [_webView stringByEvaluatingJavaScriptFromString:javascriptCommand];
 }
@@ -185,6 +185,7 @@
             [_base injectJavascriptFile];
         } else if ([_base isQueueMessageURL:url]) {
             NSString *messageQueueString = [self _evaluateJavascript:[_base webViewJavascriptFetchQueyCommand]];
+            NSLog(@"这里能产生什么样的数据:%@",messageQueueString);
             [_base flushMessageQueue:messageQueueString];
         } else {
             [_base logUnkownMessage:url];
