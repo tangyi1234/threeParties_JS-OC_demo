@@ -151,7 +151,7 @@ static int logMaxLength = 500;
 - (NSString *)webViewJavascriptCheckCommand {
     return @"typeof WebViewJavascriptBridge == \'object\';";
 }
-
+//这里获取能js对象和方法，通过调用WebViewJavascriptBridge_js中的function _fetchQueue()方法来获取js传过来的数据
 - (NSString *)webViewJavascriptFetchQueyCommand {
     return @"WebViewJavascriptBridge._fetchQueue();";
 }

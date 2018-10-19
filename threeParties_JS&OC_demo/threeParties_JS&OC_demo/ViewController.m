@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "TYWebViewController.h"
 
+
 @interface ViewController ()
 
 @end
@@ -28,6 +29,13 @@
     [but setTitle:@"跳转" forState:UIControlStateNormal];
     [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but];
+    
+    UIButton *but1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but1.frame = CGRectMake(10, 140, 150, 30);
+    but1.backgroundColor = [UIColor yellowColor];
+    [but1 setTitle:@"跳转1" forState:UIControlStateNormal];
+    [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but1];
 }
 
 - (void)selectorBut{
@@ -35,6 +43,9 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)selectorBut1{
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

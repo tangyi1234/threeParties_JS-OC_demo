@@ -184,6 +184,7 @@
         if ([_base isBridgeLoadedURL:url]) {
             [_base injectJavascriptFile];
         } else if ([_base isQueueMessageURL:url]) {
+            //_evaluateJavascript的作用是通过注入js来调用方法，获取js传来的数据
             NSString *messageQueueString = [self _evaluateJavascript:[_base webViewJavascriptFetchQueyCommand]];
             NSLog(@"这里能产生什么样的数据:%@",messageQueueString);
             [_base flushMessageQueue:messageQueueString];

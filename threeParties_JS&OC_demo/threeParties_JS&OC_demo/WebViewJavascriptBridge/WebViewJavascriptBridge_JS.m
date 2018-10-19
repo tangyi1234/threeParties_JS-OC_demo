@@ -34,6 +34,7 @@ NSString * WebViewJavascriptBridge_js() {
 	};
 
 	var messagingIframe;
+    //存储数据容器
 	var sendMessageQueue = [];
 	var messageHandlers = {};
 	
@@ -47,8 +48,9 @@ NSString * WebViewJavascriptBridge_js() {
 	function registerHandler(handlerName, handler) {
 		messageHandlers[handlerName] = handler;
 	}
-	
+	//js调用oc
 	function callHandler(handlerName, data, responseCallback) {
+        console.log("来了这里没有1");
 		if (arguments.length == 2 && typeof data == 'function') {
 			responseCallback = data;
 			data = null;
@@ -58,8 +60,9 @@ NSString * WebViewJavascriptBridge_js() {
 	function disableJavscriptAlertBoxSafetyTimeout() {
 		dispatchMessagesWithTimeoutSafety = false;
 	}
-	
+	//数据解析
 	function _doSend(message, responseCallback) {
+        console.log("来了这里没有");
 		if (responseCallback) {
 			var callbackId = 'cb_'+(uniqueId++)+'_'+new Date().getTime();
 			responseCallbacks[callbackId] = responseCallback;
@@ -69,7 +72,9 @@ NSString * WebViewJavascriptBridge_js() {
 		messagingIframe.src = CUSTOM_PROTOCOL_SCHEME + '://' + QUEUE_HAS_MESSAGE;
 	}
 
+    //从这里获取js传入到oc中数据
 	function _fetchQueue() {
+        console.log("来了这里没有2");
 		var messageQueueString = JSON.stringify(sendMessageQueue);
 		sendMessageQueue = [];
 		return messageQueueString;
