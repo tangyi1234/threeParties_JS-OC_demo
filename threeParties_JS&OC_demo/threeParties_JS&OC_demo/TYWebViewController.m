@@ -55,6 +55,8 @@
     [but setTitle:@"oc调js" forState:UIControlStateNormal];
     [but addTarget:self action:@selector(selectorBut) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but];
+    
+    
 }
 
 //注册js调oc
