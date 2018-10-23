@@ -45,6 +45,7 @@ NSString * WebViewJavascriptBridge_js() {
 	var uniqueId = 1;
 	var dispatchMessagesWithTimeoutSafety = true;
 
+    //传入block,这是html的js调用的.
 	function registerHandler(handlerName, handler) {
 		messageHandlers[handlerName] = handler;
 	}
@@ -106,7 +107,7 @@ NSString * WebViewJavascriptBridge_js() {
 						_doSend({ handlerName:message.handlerName, responseId:callbackResponseId, responseData:responseData });
 					};
 				}
-				
+				//根据oc传进来的名称来回调html中的js代码
 				var handler = messageHandlers[message.handlerName];
 				if (!handler) {
 					console.log("WebViewJavascriptBridge: WARNING: no handler for message from ObjC:", message);
