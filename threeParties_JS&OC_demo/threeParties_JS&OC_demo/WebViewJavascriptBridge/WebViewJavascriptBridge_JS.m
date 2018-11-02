@@ -94,10 +94,12 @@ NSString * WebViewJavascriptBridge_js() {
 			var responseCallback;
 
 			if (message.responseId) {
+                //通过responseId拿到block，responseCallbacks是存储_doSend方法中的block
 				responseCallback = responseCallbacks[message.responseId];
 				if (!responseCallback) {
 					return;
 				}
+                //执行block
 				responseCallback(message.responseData);
 				delete responseCallbacks[message.responseId];
 			} else {

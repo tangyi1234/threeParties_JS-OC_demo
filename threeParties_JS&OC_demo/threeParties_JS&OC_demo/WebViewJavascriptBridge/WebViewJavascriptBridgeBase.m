@@ -49,12 +49,13 @@ static int logMaxLength = 500;
         message[@"data"] = data;
     }
     
+    //将block存储到responseCallbacks容器中，使用callbackId用来做key值。在将callbackId存储到message中，用固定发字符串callbackId做key储存起来
     if (responseCallback) {
         NSString* callbackId = [NSString stringWithFormat:@"objc_cb_%ld", ++_uniqueId];
         self.responseCallbacks[callbackId] = [responseCallback copy];
         message[@"callbackId"] = callbackId;
     }
-    
+    //将识别的标识的名称储存到message中，用固定的字符串handlerName为key存储到message中。
     if (handlerName) {
         message[@"handlerName"] = handlerName;
     }
@@ -84,12 +85,14 @@ static int logMaxLength = 500;
             WVJBResponseCallback responseCallback = NULL;
             NSString* callbackId = message[@"callbackId"];
             if (callbackId) {
+                //在oc中注册一个让js调用的方法中，有个responseCallback的block。这里就是注册这个block,在注册给js调用的方法中的responseCallback，是用来进行执行的。
                 responseCallback = ^(id responseData) {
                     if (responseData == nil) {
                         responseData = [NSNull null];
                     }
                     
                     WVJBMessage* msg = @{ @"responseId":callbackId, @"responseData":responseData };
+                    //msg值都是从js中传过来的，在调用queueMessage方法是为了去调用js中的blockl了。
                     [self _queueMessage:msg];
                 };
             } else {

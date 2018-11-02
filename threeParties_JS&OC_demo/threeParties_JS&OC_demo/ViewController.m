@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import "TYWebViewController.h"
-
+#import "TYCustomViewController.h"
+#import "TYGenericViewController.h"
 
 @interface ViewController ()
 
@@ -36,6 +37,13 @@
     [but1 setTitle:@"跳转1" forState:UIControlStateNormal];
     [but1 addTarget:self action:@selector(selectorBut1) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:but1];
+    
+    UIButton *but2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    but2.frame = CGRectMake(10, 180, 150, 30);
+    but2.backgroundColor = [UIColor yellowColor];
+    [but2 setTitle:@"仿制" forState:UIControlStateNormal];
+    [but2 addTarget:self action:@selector(selectorBut2) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:but2];
 }
 
 - (void)selectorBut{
@@ -44,7 +52,13 @@
 }
 
 - (void)selectorBut1{
-    
+    TYCustomViewController *vc = [[TYCustomViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)selectorBut2{
+    TYGenericViewController *vc =[[TYGenericViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

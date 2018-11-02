@@ -19,6 +19,11 @@
 		A27B92BA2175D1FC00D18AB8 /* WKWebViewJavascriptBridge.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B92B62175D1FC00D18AB8 /* WKWebViewJavascriptBridge.m */; };
 		A27B92BD2175D26500D18AB8 /* TYWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A27B92BC2175D26500D18AB8 /* TYWebViewController.m */; };
 		A27B92BF2175DA5B00D18AB8 /* ExampleApp.html in Resources */ = {isa = PBXBuildFile; fileRef = A27B92BE2175DA5B00D18AB8 /* ExampleApp.html */; };
+		A28B29CA218ADA1F0023BBA3 /* TYCustomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A28B29C9218ADA1F0023BBA3 /* TYCustomViewController.m */; };
+		A28B29CD218ADC080023BBA3 /* TYCustomObject.m in Sources */ = {isa = PBXBuildFile; fileRef = A28B29CC218ADC080023BBA3 /* TYCustomObject.m */; };
+		A2BB6A82218C24FD00A0E079 /* TYImitationWeb_js.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BB6A81218C24FD00A0E079 /* TYImitationWeb_js.m */; };
+		A2BB6A84218C428000A0E079 /* GenericApp.html in Resources */ = {isa = PBXBuildFile; fileRef = A2BB6A83218C428000A0E079 /* GenericApp.html */; };
+		A2BB6A87218C43C800A0E079 /* TYGenericViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2BB6A86218C43C800A0E079 /* TYGenericViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,15 @@
 		A27B92BB2175D26500D18AB8 /* TYWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYWebViewController.h; sourceTree = "<group>"; };
 		A27B92BC2175D26500D18AB8 /* TYWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYWebViewController.m; sourceTree = "<group>"; };
 		A27B92BE2175DA5B00D18AB8 /* ExampleApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = ExampleApp.html; sourceTree = "<group>"; };
+		A28B29C8218ADA1F0023BBA3 /* TYCustomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCustomViewController.h; sourceTree = "<group>"; };
+		A28B29C9218ADA1F0023BBA3 /* TYCustomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCustomViewController.m; sourceTree = "<group>"; };
+		A28B29CB218ADC080023BBA3 /* TYCustomObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYCustomObject.h; sourceTree = "<group>"; };
+		A28B29CC218ADC080023BBA3 /* TYCustomObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYCustomObject.m; sourceTree = "<group>"; };
+		A2BB6A80218C24FD00A0E079 /* TYImitationWeb_js.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYImitationWeb_js.h; sourceTree = "<group>"; };
+		A2BB6A81218C24FD00A0E079 /* TYImitationWeb_js.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYImitationWeb_js.m; sourceTree = "<group>"; };
+		A2BB6A83218C428000A0E079 /* GenericApp.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = GenericApp.html; sourceTree = "<group>"; };
+		A2BB6A85218C43C800A0E079 /* TYGenericViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TYGenericViewController.h; sourceTree = "<group>"; };
+		A2BB6A86218C43C800A0E079 /* TYGenericViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TYGenericViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,12 +90,20 @@
 			isa = PBXGroup;
 			children = (
 				A27B92BE2175DA5B00D18AB8 /* ExampleApp.html */,
+				A2BB6A83218C428000A0E079 /* GenericApp.html */,
 				A27B92952175D0F500D18AB8 /* AppDelegate.h */,
 				A27B92962175D0F500D18AB8 /* AppDelegate.m */,
 				A27B92982175D0F500D18AB8 /* ViewController.h */,
 				A27B92992175D0F500D18AB8 /* ViewController.m */,
 				A27B92BB2175D26500D18AB8 /* TYWebViewController.h */,
 				A27B92BC2175D26500D18AB8 /* TYWebViewController.m */,
+				A28B29C8218ADA1F0023BBA3 /* TYCustomViewController.h */,
+				A28B29C9218ADA1F0023BBA3 /* TYCustomViewController.m */,
+				A28B29CB218ADC080023BBA3 /* TYCustomObject.h */,
+				A28B29CC218ADC080023BBA3 /* TYCustomObject.m */,
+				A2BB6A85218C43C800A0E079 /* TYGenericViewController.h */,
+				A2BB6A86218C43C800A0E079 /* TYGenericViewController.m */,
+				A2BB6A7F218C248100A0E079 /* ImitationWebJs */,
 				A27B92AE2175D1FC00D18AB8 /* WebViewJavascriptBridge */,
 				A27B92A12175D0F500D18AB8 /* Assets.xcassets */,
 				A27B92A32175D0F500D18AB8 /* LaunchScreen.storyboard */,
@@ -106,6 +128,16 @@
 			);
 			path = WebViewJavascriptBridge;
 			sourceTree = "<group>";
+		};
+		A2BB6A7F218C248100A0E079 /* ImitationWebJs */ = {
+			isa = PBXGroup;
+			children = (
+				A2BB6A80218C24FD00A0E079 /* TYImitationWeb_js.h */,
+				A2BB6A81218C24FD00A0E079 /* TYImitationWeb_js.m */,
+			);
+			name = ImitationWebJs;
+			path = "threeParties_JS&OC_demo/ImitationWebJs";
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -165,6 +197,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2BB6A84218C428000A0E079 /* GenericApp.html in Resources */,
 				A27B92A52175D0F500D18AB8 /* LaunchScreen.storyboard in Resources */,
 				A27B92A22175D0F500D18AB8 /* Assets.xcassets in Resources */,
 				A27B92BF2175DA5B00D18AB8 /* ExampleApp.html in Resources */,
@@ -184,9 +217,13 @@
 				A27B92B82175D1FC00D18AB8 /* WebViewJavascriptBridge_JS.m in Sources */,
 				A27B92A82175D0F500D18AB8 /* main.m in Sources */,
 				A27B92B92175D1FC00D18AB8 /* WebViewJavascriptBridgeBase.m in Sources */,
+				A28B29CA218ADA1F0023BBA3 /* TYCustomViewController.m in Sources */,
+				A2BB6A87218C43C800A0E079 /* TYGenericViewController.m in Sources */,
 				A27B92BA2175D1FC00D18AB8 /* WKWebViewJavascriptBridge.m in Sources */,
+				A28B29CD218ADC080023BBA3 /* TYCustomObject.m in Sources */,
 				A27B92972175D0F500D18AB8 /* AppDelegate.m in Sources */,
 				A27B92B72175D1FC00D18AB8 /* WebViewJavascriptBridge.m in Sources */,
+				A2BB6A82218C24FD00A0E079 /* TYImitationWeb_js.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
