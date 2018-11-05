@@ -10,7 +10,7 @@
 #import "WebViewJavascriptBridge.h"
 #define H [UIScreen mainScreen].bounds.size.height
 #define W [UIScreen mainScreen].bounds.size.width
-@interface TYWebViewController ()
+@interface TYWebViewController ()<UIWebViewDelegate>
 @property (nonatomic, strong) WebViewJavascriptBridge *bridge;
 @property (nonatomic, strong) UIWebView *webView;
 @end
@@ -29,6 +29,7 @@
 - (UIWebView *)webView{
     if(!_webView){
         _webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _webView.delegate = self;
     }
     return _webView;
 }
@@ -73,6 +74,11 @@
     [self.bridge callHandler:@"testJavascriptHandler" data:data responseCallback:^(id responseData) {
         NSLog(@"这个方法能调用吗:%@",responseData);
     }];
+}
+
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"这里接收到了什么:%@",[request URL]);
+    return YES;
 }
 
 - (void)loadExamplePage:(UIWebView*)webView {

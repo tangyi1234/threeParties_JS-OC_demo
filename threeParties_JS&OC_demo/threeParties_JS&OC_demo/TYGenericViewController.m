@@ -8,6 +8,11 @@
 
 #import "TYGenericViewController.h"
 #import "TYImitationWeb_js.h"
+
+#define kOldProtocolScheme @"wvjbscheme"
+#define kNewProtocolScheme @"https"
+#define kQueueHasMessage   @"__wvjb_queue_message__"
+#define kBridgeLoaded      @"__bridge_loaded__"
 @interface TYGenericViewController ()<UIWebViewDelegate>
 @property (nonatomic, strong) UIWebView *webView;
 @end
@@ -23,7 +28,7 @@
 }
 
 - (UIWebView *)webView{
-    if(_webView){
+    if(_webView == nil){
         _webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
         _webView.delegate = self;
     }
@@ -61,8 +66,8 @@
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\f" withString:@"\\f"];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u2028" withString:@"\\u2028"];
     messageJSON = [messageJSON stringByReplacingOccurrencesOfString:@"\u2029" withString:@"\\u2029"];
-    
-    NSString* javascriptCommand = [NSString stringWithFormat:@"WebViewJavascriptBridge._handleMessageFromObjC('%@');", messageJSON];
+    NSLog(@"这里json数据转化成什么样子了:%@",messageJSON);
+    NSString* javascriptCommand = [NSString stringWithFormat:@"TYImitationWebMeson._handleMessageFromObjC('%@');", messageJSON];
     if ([[NSThread currentThread] isMainThread]) {
         [self sendJs:javascriptCommand];
         
@@ -78,13 +83,20 @@
 }
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    [self createConnectionc];
+    NSLog(@"获取数据:%@",[request URL]);
+    NSURL *url = [request URL];
+    if ([self isWebViewJavascriptBridgeURL:url]) {
+        if ([self isBridgeLoadedURL:url]) {
+            [self createConnectionc];
+        }
+    }
     return YES;
 }
 
 //实现关联
 - (void)createConnectionc{
     NSString *js = TYImitationWebMeson_js();
+    NSLog(@"我们自己写的js:%@",js);
     [self sendJs:js];
 }
 //具体的操作
@@ -97,6 +109,29 @@
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
     [webView loadHTMLString:appHtml baseURL:baseURL];
+}
+
+#pragma mark -- 判断url
+- (BOOL)isWebViewJavascriptBridgeURL:(NSURL*)url {
+    if (![self isSchemeMatch:url]) {
+        return NO;
+    }
+    return [self isBridgeLoadedURL:url] || [self isQueueMessageURL:url];
+}
+
+- (BOOL)isSchemeMatch:(NSURL*)url {
+    NSString* scheme = url.scheme.lowercaseString;
+    return [scheme isEqualToString:kNewProtocolScheme] || [scheme isEqualToString:kOldProtocolScheme];
+}
+
+- (BOOL)isQueueMessageURL:(NSURL*)url {
+    NSString* host = url.host.lowercaseString;
+    return [self isSchemeMatch:url] && [host isEqualToString:kQueueHasMessage];
+}
+
+- (BOOL)isBridgeLoadedURL:(NSURL*)url {
+    NSString* host = url.host.lowercaseString;
+    return [self isSchemeMatch:url] && [host isEqualToString:kBridgeLoaded];
 }
 
 - (void)didReceiveMemoryWarning {

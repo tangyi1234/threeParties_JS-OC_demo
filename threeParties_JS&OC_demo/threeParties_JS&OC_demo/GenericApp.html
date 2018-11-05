@@ -13,19 +13,26 @@
 	window.onerror = function(err) {
 		log('window.onerror: ' + err)
 	}
-
+    //这里现在没有问题了
     function setupWebViewJavascriptBridge(callback) {
-        if (window.WebViewJavascriptBridge) { return callback(TYImitationWebMeson); }
-        //if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
-        //window.WVJBCallbacks = [callback];
-        //var WVJBIframe = document.createElement('iframe');
-        //WVJBIframe.style.display = 'none';
-        //WVJBIframe.src = 'https://__bridge_loaded__';
-        //document.documentElement.appendChild(WVJBIframe);
-        //setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
+        if (window.TYImitationWebMeson) {
+            alert('这是是否调用了0');
+            return callback(TYImitationWebMeson); }
+        alert('这是是否调用了1');
+        if (window.WVJBCallbacks) { return window.WVJBCallbacks.push(callback); }
+        alert('这是是否调用了2');
+        window.WVJBCallbacks = [callback];
+        var WVJBIframe = document.createElement('iframe');
+        WVJBIframe.style.display = 'none';
+        WVJBIframe.src = 'https://__bridge_loaded__';
+        //此方法能向我们发送数据，向app发消息
+        document.documentElement.appendChild(WVJBIframe);
+        alert('这是是否调用了3');
+        setTimeout(function() { document.documentElement.removeChild(WVJBIframe) }, 0)
     }
-
+    //function(bridge)这个闭包收调用是在oc代码中js
     setupWebViewJavascriptBridge(function(bridge) {
+        alert('回调1');
 		var uniqueId = 1
 		function log(message, data) {
 			var log = document.getElementById('log')
@@ -35,16 +42,17 @@
 			if (log.children.length) { log.insertBefore(el, log.children[0]) }
 			else { log.appendChild(el) }
 		}
-
+        alert('回调2');
 		bridge.registerHandler('testJavascriptHandler', function(data, responseCallback) {
 			log('ObjC called testJavascriptHandler with', data)
+            alert('这是是否调用了');
 			var responseData = { 'Javascript Says':'Right back atcha!' }
 			log('JS responding with', responseData)
 			responseCallback(responseData)
 		})
-
+        alert('回调3');
 		document.body.appendChild(document.createElement('br'))
-
+        alert('回调4');
 		var callbackButton = document.getElementById('buttons').appendChild(document.createElement('button'))
 		callbackButton.innerHTML = 'Fire testObjcCallback'
 		callbackButton.onclick = function(e) {
@@ -54,15 +62,30 @@
 				log('JS got response', response)
 			})
 		}
-        
+        alert('回调5');
+        document.getElementById('jsGoOc').onclick = function (e) {
+            alert('这是是否调用了');
+            log('js call objc: getBlogNameFromObjC')
+            bridge.callHandler('jsGoOc', {'js调用oc': '也是成功'}, function(response) {
+                log('JS got response', response)
+            })
+        }
                                  
 	})
+    
+    function drawOn(message){
+        alert(message);
+    }
+    
 	</script>
 	<div id='buttons'></div> <div id='log'></div>
     <div>
         <input type="button" value="getBlogNameFromObjC" id="blogId"/>
     </div>
     <div>
-        <input type="button" value="js调用oc" id="jsGoOc"/>
+        <input type="button" value="js调用oc，能不能成功" id="jsGoOc"/>
+    </div>
+    <div>
+    <button type="button" onclick="drawOn('这是用来调oc方法')">这是用来调oc方法</button>
     </div>
 </body></html>
